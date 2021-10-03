@@ -9,7 +9,7 @@ export default function Contact() {
             <Image width="100" height="50" src={icons} alt=""/>
             <p className="desc"> WE&apos;RE ALL $MAD HERE</p>
             <div className="mt__5">
-                <h3 className="sub__title">Contact</h3>
+                <h3 className="sub__title">Contact</h3> 
                 <p>For Partnerships and Questions, Available At All Hours</p>
             </div>
             <div className="mt__5">
