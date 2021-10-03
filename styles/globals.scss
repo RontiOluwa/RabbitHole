@@ -1,0 +1,779 @@
+@import "https://fonts.googleapis.com/css2?family=Montserrat&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap";
+@keyframes animatedBackground {
+	from {
+		background-position: 0 0;
+	}
+}
+* {
+	padding: 0px;
+	margin: 0px;
+	scroll-behavior: smooth;
+	font-family: 'Montserrat', sans-serif;
+	&:focus {
+		outline: none;
+	}
+}
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #ED347C; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+  }
+body {
+	background-color: #0E121A;
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #fff;
+	cursor: pointer;
+}
+.wrapper {
+	height: inherit;
+}
+#service {
+	margin-top: -4rem;
+	padding-top: 4rem;
+}
+.wrapper__container {
+	background: linear-gradient(180deg, rgba(14, 18, 26, 0) 0%, #0E121A 93.75%),url('../public/svg/Union.svg');
+	width: 100%;
+	animation: animatedBackground 10s linear infinite alternate;
+	background-position: center;
+}
+nav {
+	padding: 1rem;
+	margin: auto;
+	ul {
+		list-style-type: none;
+		display: flex;
+		float: right;
+		li {
+			float: right;
+			padding: 2rem;
+		}
+	}
+}
+nav {
+	ul {
+		li {
+			a {
+				&:hover {
+					padding-bottom: 0.5rem;
+					border-bottom: 2px solid #fff;
+					text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd, -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd, 0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+				}
+			}
+		}
+	}
+}
+
+.hamburger {
+	display: none;
+	margin-top: 1rem;
+	position: absolute;
+	cursor: pointer;
+	right: 2rem;
+	&:checked {
+		display: none !important;
+	}
+}
+.hamburger__bar {
+	display: block;
+	width: 25px;
+	height: 3px;
+	margin: 5px auto;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	background-color: #fff;
+}
+.logo {
+	float: left;
+}
+.logo__text {
+	margin: 0px 0px 14px 8px;
+}
+.btn {
+	background: #ED347C;
+	border: none;
+	color: #fff;
+	border-radius: 8px;
+	margin-top: -2rem;
+	cursor: pointer;
+	padding: 14px 24px;
+}
+@mixin glitchCopy { 
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.header {
+	margin: 8rem auto;
+	padding-bottom: 4rem;
+	h4 {
+		font-family: 'Montserrat Alternates', sans-serif;
+		font-style: normal;
+		width: 84%;
+		margin: auto;
+		font-weight: bold;
+		font-size: 4rem;
+		line-height: 103%;
+		align-items: center;
+		text-align: center;
+		letter-spacing: 0.225em;
+		color: #ED347C;
+		img {
+			width: 3rem;
+		}
+	}
+	.down{
+		&::after{
+			top: 67px !important;
+		}
+		&::before{
+			top: 67px !important;
+		}
+	}
+	span {
+		font-family: 'Montserrat Alternates', sans-serif;
+		font-style: normal;
+		width: 84%;
+		margin: auto;
+		font-weight: bold;
+		font-size: 4rem;
+		line-height: 103%;
+		align-items: center;
+		text-align: center;
+		letter-spacing: 0.225em;
+		color: #ED347C;
+		animation: glitch-skew 1s infinite linear alternate-reverse;
+		&::before{
+			@include glitchCopy;
+			left: 2px;
+			text-shadow: -2px 0 #ff00c1;
+			clip: rect(44px, 450px, 56px, 0);
+			animation: glitch-anim 5s infinite linear alternate-reverse;
+		}
+		&::after {
+			@include glitchCopy;
+			left: -2px;
+			text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+			animation: glitch-anim2 1s infinite linear alternate-reverse;
+		}
+	}
+	p {
+		font-family: 'Montserrat Alternates', sans-serif;
+		font-style: normal;
+		color: #fff;
+		margin-top: 2rem;
+		font-size: 2rem;
+	}
+}
+@keyframes glitch-anim {
+$steps: 20;
+@for $i from 0 through $steps {
+	#{percentage($i*(1/$steps))} {
+	clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+			transform: skew((random(100) / 100) + deg);
+	}
+}
+}
+
+// Same deal, just duplicated for ultra randomness.
+@keyframes glitch-anim2 {
+$steps: 20;
+@for $i from 0 through $steps {
+	#{percentage($i*(1/$steps))} {
+	clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+			transform: skew((random(100) / 100) + deg);
+	}
+}
+}
+
+// Does the same deal as before, but now only skews. Used for main text.
+@keyframes glitch-skew {
+$steps: 10;
+@for $i from 0 through $steps {
+	#{percentage($i*(1/$steps))} {
+	transform: skew((random(10) - 5) + deg);
+	}
+}
+}
+.center {
+	text-align: center;
+	img {
+		margin-top: 6rem;
+		margin-bottom: -0.6rem !important;
+	}
+}
+.mw__60{
+	max-width: 60rem !important;
+	padding: 2rem;
+	margin: auto;
+}
+.mw__67{
+	max-width: 67rem;
+	padding: 2rem;
+	margin: auto;
+}
+.body___wrapper {
+	// padding: 2rem;
+	margin: -11rem auto;
+}
+.flex {
+	display: flex;
+}
+.w_50 {
+	width: 50%;
+	img {
+		width: 25rem;
+		margin-top: -6rem;
+	}
+	h3 {
+		color: #4A5670;
+		font-weight: 600;
+		font-size: 2rem;
+		line-height: 25px;
+	}
+	p {
+		color: #fff;
+		margin: 28px 0px;
+		font-size: 1rem;
+		line-height: 25px;
+	}
+}
+.line {
+	height: 2px;
+	width: 2rem;
+	background: #fff;
+}
+.right {
+	text-align: right;
+	float: right;
+}
+.left {
+	text-align: left;
+	float: left;
+}
+.mt__5 {
+	margin-top: 5rem;
+}
+.sub__title {
+	font-family: 'Montserrat Alternates', sans-serif;
+	letter-spacing: 0.225em;
+	font-weight: bold;
+	font-size: 2rem;
+	margin-top: 1rem;
+	line-height: 107%;
+	color: #ED347C;
+}
+.shadow__efftect{
+	color: #fff !important;
+	font-size: 1.7rem;
+	text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd, -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd, 0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+    animation: pulsate 0.11s ease-in-out infinite alternate;
+}
+
+@keyframes pulsate {
+    
+	100% {
+		text-shadow:
+		0 0 4px #fff,
+		0 0 11px #fff,
+		0 0 19px #fff,
+		0 0 40px #5271ff,
+		0 0 80px #5271ff,
+		0 0 90px #5271ff,
+		0 0 100px #5271ff,
+		0 0 150px #5271ff;
+	}
+	0% {
+	  text-shadow:
+	  0 0 4px #fff,
+	  0 0 10px #fff,
+	  0 0 18px #fff,
+	  0 0 38px #5271ff,
+	  0 0 73px #5271ff,
+	  0 0 80px #5271ff,
+	  0 0 94px #5271ff,
+	  0 0 140px #5271ff;
+  }
+}
+.sub__desc {
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.7rem;
+	line-height: 26px;
+	color: #FFFFFF;
+	margin-top: 1rem;
+}
+.paths{
+	margin-top: 7rem;
+}
+.card {
+	background: #0E121A;
+	border: 3px solid #1D2535;
+	width: 33.33%;
+	border-radius: 15px;
+	padding: 1rem;
+	color: #fff;
+	margin: 5rem 2rem 4rem 0rem;
+	z-index: 9;
+	b {
+		font-size: 1.4rem;
+	}
+	p {
+		font-size: 0.8rem;
+		letter-spacing: 4px;
+		margin-bottom: 0.7rem;
+		line-height: 25px;
+	}
+	.radio {
+		position: absolute;
+		opacity: 0;
+		left: 100%;
+		cursor: pointer;
+	}
+	span {
+		color: #4A5670;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		font-size: 0.8rem;
+		line-height: 17px;
+	}
+	// .statistic{
+	// 	position: absolute;
+	// 	width: 92%;
+	// 	bottom: 0px;
+	// }
+	ul {
+		list-style: none;
+		height: 14rem;
+		margin-top: 1rem;
+		li {
+			margin-top: 0.6rem;
+			img {
+				margin: -3px;
+			}
+			a {
+				font-style: normal;
+				font-weight: 300;
+				padding: 0.3rem;
+				font-size: 15px;
+				line-height: 25px;
+				letter-spacing: 0.5px;
+				color: #4A5670;
+			}
+		}
+	}
+	&:hover {
+		.card__checkmark {
+			border: 3px solid #ED347C;
+			box-sizing: border-box;
+			filter: drop-shadow(0px -8px 20px rgba(237, 52, 124, 0.28)) drop-shadow(0px 8px 20px rgba(160, 28, 83, 0.21));
+			&:after {
+				display: block;
+			}
+		}
+		a{
+			color: #fff !important;
+		}
+		button{
+			background: #ED347C;
+		}
+		box-shadow: 0px 90px 130px #101521, 0px -10px 90px rgba(237, 52, 124, 0.15), 0px -12px 50px rgba(251, 196, 217, 0.18), inset 0px -10px 30px #0E121A, inset 0px 7px 26px rgba(237, 52, 124, 0.22);
+	}
+}
+.card__checkmark {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 85%;
+	background-color: inherit;
+	border: 3px solid #1D2535;
+	border-radius: 50%;
+	&:after {
+		content: "";
+		position: absolute;
+		display: none;
+	}
+}
+.card__top {
+	position: relative;
+	input {
+		&:checked {
+			~ {
+				.card__checkmark {
+					border: 3px solid #ED347C;
+					box-sizing: border-box;
+					filter: drop-shadow(0px -8px 20px rgba(237, 52, 124, 0.28)) drop-shadow(0px 8px 20px rgba(160, 28, 83, 0.21));
+					&:after {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+	.card__checkmark {
+		&:after {
+			top: 5px;
+			left: 5px;
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background: #ED347C;
+		}
+	}
+}
+.art {
+	margin-bottom: 1rem;
+	text-align: center;
+	img {
+		margin-top: 0rem;
+	}
+}
+li {
+	list-style: none;
+}
+.w-72 {
+	width: 72%;
+}
+.card__figures {
+	label {
+		color: #4A5670;
+		font-size: 0.8rem;
+	}
+	b {
+		color: #FFFFFF;
+		font-weight: 600;
+		font-size: 1rem;
+		line-height: 27px;
+		font-family: 'Montserrat Alternates', sans-serif;
+	}
+}
+.w__20{
+	transform: scale(0.8);
+}
+.card__form {
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid #4A5670;
+	border-radius: 8px;
+	width: 100%;
+	display: flex;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	button {
+		border: none;
+		background: #1D2535;
+		cursor: pointer;
+		border-radius: 4px;
+		padding: 0.5rem;
+		margin: 2px;
+		width: 30%;
+		color: #fff;
+	}
+	input{
+		width: 70%;
+	}
+}
+.card__amount {
+	padding: 0.7rem;
+	border: none;
+	color: #FFFFFF;
+	width: 63%;
+	background: inherit;
+}
+.card-active {
+	.card__form {
+		button {
+			background: #ED347C !important;
+			box-shadow: 0px -8px 20px rgb(237 52 124 / 28%), 0px 8px 20px rgb(160 28 83 / 21%);
+		}
+	}
+}
+.light__red {
+	color: #ED347C !important;
+}
+.relative {
+	position: relative;
+}
+.bg__left {
+    position: absolute;
+    top: 71%;
+    left: 0;
+}
+.mt__3{
+	margin-top: 3rem;
+	padding-bottom: 3rem;
+}
+.bg__right {
+    position: absolute;
+    width: 265px;
+    top: 73%;
+    right: 0;
+}
+.faq__list {
+	margin-top: 5rem;
+}
+.faq {
+	ul {
+		margin: 1rem;
+		li {
+			b {
+				color: #fff;
+				font-family: 'Montserrat Alternates', sans-serif;
+				font-style: normal;
+				font-weight: bold;
+				font-size: 1.4rem;
+				line-height: 2rem;
+				color: #FFFFFF;
+				margin-top: 1rem;
+			}
+			p {
+				font-style: normal;
+				font-weight: 300;
+				font-size: 0.9rem;
+				line-height: 1.5rem;
+				letter-spacing: 0.5px;
+			}
+		}
+	}
+	margin-top: 5rem;
+	// max-width: 60rem;
+    margin: auto;
+}
+.contact {
+	margin-top: 4rem;
+	h3 {
+		font-size: 2rem;
+		font-family: 'Montserrat', sans-serif;
+	}
+	p {
+		font-size: 1.4rem;
+		color: #fff;
+		margin-top: 1rem;
+		font-family: 'Montserrat', sans-serif;
+	}
+}
+.font__sm {
+	font-size: 1.5rem !important;
+}
+.footer {
+	font-size: 1rem;
+	color: #fff;
+	margin-bottom: 3rem;
+}
+.step {
+	margin-top: 5rem;
+}
+.step___img{
+	width: 100%;
+    height: auto;
+}
+@-moz-keyframes shimmer {
+	0% {
+	  background-position: top left;
+	}
+	100% {
+	  background-position: top right;
+	}
+}
+@-webkit-keyframes shimmer {
+0% {
+	background-position: top left;
+}
+100% {
+	background-position: top right;
+}
+}
+@keyframes shimmer {
+0% {
+	background-position: top left;
+}
+100% {
+	background-position: top right;
+}
+}
+@keyframes shimmer {
+0% {
+	background-position: top left;
+}
+100% {
+	background-position: top right;
+}
+}
+.shimmer__effect{
+	color: rgba(255,255,255,0.1);
+	animation: shimmer 1s infinite linear alternate-reverse;
+}
+@media only screen and (max-width: 1396px) {
+	.down_svg {
+		margin-bottom: -400px;
+	}
+	.bg__right {
+		// right: -22.6%;
+		display: none;
+	}
+}
+@media only screen and (max-width: 736px) {
+	.down_svg {
+		margin-bottom: -3000px;
+	}
+}
+@media only screen and (max-width: 830px) {
+	.down_svg {
+		margin-bottom: -600px;
+	}
+}
+@media only screen and (max-width: 670px) {
+	.down_svg {
+		margin-bottom: 0px;
+
+	}
+}
+@media only screen and (max-width: 1300px) {
+	.bg__right {
+		display: none;
+	}
+}
+@media only screen and (max-width: 1496px) {
+	.down__svg{
+		height: 1009px;
+	}
+}
+@media only screen and (max-width: 1083px) {
+	.hamburger {
+		display: block;
+	}
+	nav {
+		ul {
+			li {
+				float: inherit !important;
+				border-bottom: 1px solid #eee;
+				a {
+					color: #111;
+				}
+			}
+			display: none;
+			position: absolute;
+			margin: auto;
+			left: 1rem;
+			right: 1rem;
+			width: 88% !important;
+			z-index: 1;
+			top: 5rem;
+			flex-direction: column;
+			background-color: #fff;
+			width: 100%;
+			text-align: center;
+			transition: 0.3s;
+			box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+		}
+	}
+	.btn {
+		color: #fff;
+	}
+}
+@media only screen and (max-width: 889px) {
+	.w_50 {
+		img {
+			width: 22rem;
+			margin-top: -2rem;
+		}
+	}
+}
+@media only screen and (max-width: 967px) {
+	.flex {
+		display: block;
+	}
+	.reverse{
+		-ms-box-orient: horizontal;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: column-reverse; 
+		flex-direction: column-reverse; 
+	}
+	.right__position {
+		text-align: center !important;
+		float: none;
+		margin: auto;
+	}
+	.left__position {
+		text-align: center !important;
+		float: none;
+		margin: auto;
+	}
+	.card {
+		margin: 3rem auto;
+		width: 90%;
+	}
+	.w_50 {
+		width: 100%;
+	}
+	.left {
+		text-align: center !important;
+	}
+	.right {
+		text-align: center !important;
+	}
+	.club {
+		margin-top: 3rem;
+	}
+	.bg__left {
+		display: none;
+	}
+}
+@media only screen and (max-width: 539px) {
+	.header {
+		h4 {
+			font-size: 3.5rem !important;
+		}
+		p {
+			font-size: 1.5rem !important;
+		}
+		span {
+			font-size: inherit !important;
+		}
+	}
+}
+@media only screen and (max-width: 419px) {
+	.w_50 {
+		img {
+			width: 15rem !important;
+		}
+	}
+	.logo__text {
+		width: 9rem;
+	}
+	nav {
+		ul {
+			li {
+				padding: 1rem;
+				border-bottom: 1px solid #eee;
+			}
+		}
+	}
+}
